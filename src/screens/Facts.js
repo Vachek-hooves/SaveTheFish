@@ -7,17 +7,15 @@ import {
   Text,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
+import { useState } from 'react';
+import LottieView from 'lottie-react-native';
+
+import { facts } from '../data/facts';
 import Background from '../components/Background';
 import Header from '../components/Header';
-import { actions } from '../data/actions';
 import SmallGradientBtn from '../components/SmallGradientBtn';
 import LargeGradientBtn from '../components/LargeGradientBtn';
-import { useState } from 'react';
-import { facts } from '../data/facts';
-import Loader from '../components/Loader';
-import LottieView from 'lottie-react-native';
 
 const { height } = Dimensions.get('window');
 
@@ -52,7 +50,10 @@ const Facts = () => {
   return (
     <Background>
       <Header title={'Daily Fact'} />
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ height: 600 }}
+      >
         <View style={styles.container}>
           <Image source={require('../assets/images/facts.png')} />
           <View style={{ paddingHorizontal: 28 }}>
@@ -94,7 +95,7 @@ const Facts = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 28, paddingBottom: height * 0.16, alignSelf: 'center' },
+  container: { paddingBottom: height * 0.16, alignSelf: 'center' },
   factContainer: {
     width: '100%',
     backgroundColor: '#fff',
@@ -104,9 +105,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -40,
   },
-  image: {
-    height: 395,
-  },
+
   sectionTitle: {
     fontFamily: Platform.OS === 'ios' ? 'Nerko One' : 'Nerko',
     fontSize: 18,

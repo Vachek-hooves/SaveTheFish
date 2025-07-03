@@ -1,7 +1,13 @@
 import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-const LargeGradientBtn = ({ title, onPress, btnWidth }) => {
+const LargeGradientBtn = ({
+  title,
+  onPress,
+  btnWidth,
+  colors = ['#F26801', '#FF7F20'],
+  textColor = '#042B4C',
+}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -14,8 +20,8 @@ const LargeGradientBtn = ({ title, onPress, btnWidth }) => {
         end={{ x: 1, y: 1 }}
         style={styles.border}
       >
-        <LinearGradient colors={['#F26801', '#FF7F20']} style={styles.button}>
-          <Text style={styles.label}>{title}</Text>
+        <LinearGradient colors={colors} style={styles.button}>
+          <Text style={[styles.label, { color: textColor }]}>{title}</Text>
         </LinearGradient>
       </LinearGradient>
     </TouchableOpacity>

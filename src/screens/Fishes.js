@@ -7,11 +7,8 @@ import {
   Text,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-
 import Background from '../components/Background';
 import Header from '../components/Header';
-
 import SmallGradientBtn from '../components/SmallGradientBtn';
 import { fishes } from '../data/fishes';
 

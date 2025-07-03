@@ -7,11 +7,12 @@ import {
   Text,
   View,
 } from 'react-native';
-import Background from '../../components/Background';
 import { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import LargeGradientBtn from '../../components/LargeGradientBtn';
 import { useNavigation } from '@react-navigation/native';
+
+import Background from '../../components/Background';
+import LargeGradientBtn from '../../components/LargeGradientBtn';
 
 const { height } = Dimensions.get('window');
 
@@ -64,33 +65,39 @@ const Onboard = () => {
             colors={['#005B9E', '#00376B']}
             style={styles.contentContainer}
           >
-            <View
-              style={{
-                padding: 20,
-                height: '100%',
-                width: '100%',
-              }}
-            >
-              <Text style={styles.title}>
-                {index === 0 && 'Welcome to Save The Fish!'}
-                {index === 1 && 'The Ocean Needs You'}
-                {index === 2 && 'Learn About Endangered Species'}
-                {index === 3 && 'Clean The Sea Game'}
-                {index === 4 && 'Join Real-Life Actions'}
-              </Text>
-              <Text style={styles.subtitle}>
-                {index === 0 &&
-                  `Discover how you can help protect the North and Baltic Seas.Learn, play, and take action for our oceans.`}
-                {index === 1 &&
-                  'Overfishing, plastic pollution, and habitat loss threaten marine life in Germany’s seas. But small actions make a big difference.'}
-                {index === 2 &&
-                  'Explore interactive fish cards, daily facts, and important tips on how to live sustainably.'}
-                {index === 3 &&
-                  'Play the mini-game, collect ocean waste, and unlock new marine animals while learning how to protect their habitat.'}
-                {index === 4 &&
-                  'Find clean-up events, support Greenpeace projects, and become part of the solution.'}
-              </Text>
-              <LargeGradientBtn title={'Get'} onPress={handleNextStep} />
+            <View style={styles.contentWrap}>
+              <View style={{ minHeight: 150 }}>
+                <Text style={styles.title}>
+                  {index === 0 && 'Welcome to Save The Fish!'}
+                  {index === 1 && 'The Ocean Needs You'}
+                  {index === 2 && 'Learn About Endangered Species'}
+                  {index === 3 && 'Clean The Sea Game'}
+                  {index === 4 && 'Join Real-Life Actions'}
+                </Text>
+                <Text style={styles.subtitle}>
+                  {index === 0 &&
+                    `Discover how you can help protect the North and Baltic Seas.Learn, play, and take action for our oceans.`}
+                  {index === 1 &&
+                    'Overfishing, plastic pollution, and habitat loss threaten marine life in Germany’s seas. But small actions make a big difference.'}
+                  {index === 2 &&
+                    'Explore interactive fish cards, daily facts, and important tips on how to live sustainably.'}
+                  {index === 3 &&
+                    'Play the mini-game, collect ocean waste, and unlock new marine animals while learning how to protect their habitat.'}
+                  {index === 4 &&
+                    'Find clean-up events, support Greenpeace projects, and become part of the solution.'}
+                </Text>
+              </View>
+
+              <LargeGradientBtn
+                title={
+                  index === 0
+                    ? 'Get Started'
+                    : index > 0 && index <= 3
+                    ? 'Next'
+                    : 'Let’s Start'
+                }
+                onPress={handleNextStep}
+              />
             </View>
           </LinearGradient>
         </View>
@@ -104,6 +111,7 @@ const styles = StyleSheet.create({
     paddingTop: height * 0.06,
     alignItems: 'center',
   },
+  contentWrap: { padding: 20, height: '100%', width: '100%' },
   contentContainer: {
     borderTopLeftRadius: 22,
     borderTopRightRadius: 22,
